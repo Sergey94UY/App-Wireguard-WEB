@@ -1,0 +1,110 @@
+body {
+    font-family: sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #3e64ff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the buttons */
+    display: block; /* Make the button block-level */
+    margin: 0 auto;
+  }
+  
+  .button:hover {
+    background-color: #3e80ff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button-generated {
+    background-color: #00cc44;
+  }
+  
+
+  button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+    text-align: center; 
+  }
+  
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .command-box {
+    background-color: #f0f0f0; /* Light gray background color */
+    font-size: 16px; /* 16px font size */
+    border: 1px solid #ccc; /* 1px solid border */
+    padding: 10px; /* 10px padding */
+    margin: 10px 0; /* 10px margin top and bottom */
+  }
+  
+  .center-button {
+    text-align: center; /* Center the buttons */
+    display: block; /* Make the button block-level */
+    margin: 0 auto; /* Center the button horizontally */
+  }
+
+  .qr-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  form {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  #opciones {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #opciones {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #opciones label {
+    margin-right: 10px;
+  }
+  
+  .center-text {
+    text-align: center;
+  }

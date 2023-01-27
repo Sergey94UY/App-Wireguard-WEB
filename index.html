@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset="utf-8">
+        <title>Generador de archivo de configuración de peer WireGuard</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="app.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+      </head>
+
+<body>
+	<h1 class="center-text">Generador de archivo de configuración de peer WireGuard by Ing. Sergio Maine</h1>
+	<div class="adm">
+		<form id="params" method="get">
+			
+			<div style="margin-top: 20px;"></div>
+			<label>¿Tienes el server Wireguard?</label>
+			<div style="margin-top: 20px;"></div>
+			  <div id="opciones">
+				<label for="si">Si</label>
+				<input type="checkbox" id="si">
+				<label for="no">No</label>
+				<input type="checkbox" id="no">
+				
+			  </div>
+			
+			  <div class="mensaje" style="display:none">
+				<pre>
+					
+/interface wireguard
+add listen-port=13231 name=wireguard1
+
+/ip address
+add address=10.99.99.1/24 interface=wireguard1
+
+/ip firewall filter
+add action=accept chain=input comment="allow WireGuard" dst-port=13231 protocol=udp place-before=1
+
+/ip firewall filter
+add action=accept chain=input comment="allow WireGuard traffic" src-address=10.99.99.0/24 place-before=1
+			
+				
+				</pre> 
+			  </div>
+
+			  <script>
+				document.getElementById("no").addEventListener("change", function() {
+				  if (this.checked) {
+					document.querySelector(".mensaje").style.display = "block";
+					document.getElementById("si").checked = false;
+				  } else {
+					document.querySelector(".mensaje").style.display = "none";
+				  }
+				});
+			
+				document.getElementById("si").addEventListener("change", function() {
+				  if (this.checked) {
+					document.querySelector(".mensaje").style.display = "none";
+					document.getElementById("no").checked = false;
+				  }
+				});
+			  </script>
+
+			  
+			  <script>document.getElementById("hasServer").addEventListener("change", function() {
+				if (this.checked) {
+				  document.getElementById("serverMessage").style.display = "none";
+				  document.getElementById("serverCommands").style.display = "none";
+				} else {
+				  document.getElementById("serverMessage").style.display = "block";
+				  document.getElementById("serverCommands").style.display = "block";
+				}
+			  });
+			  </script>
+
+
+			<div style="margin-top: 20px;"></div>
+
+			<label for="sa">Server Address:</label><input type="text" id="sa" name="sa" value="IP o CLOUD MKT">
+			<label for="sp">Port:</label><input type="number" id="sp" , name="sp" min="1" max="65635" value="51820"><br>
+			<label for="sk">Server Pubkey:</label><input type="text" id="sk" , name="sk" value="RANDOM-EXAMPLE"><br>
+			<label for="ca">Client Address:</label><input type="text" id="ca" name="ca" value="10.99.99.2"><br>
+			<label for="aa">Allowed Subnet:</label><input type="text" id="aa" name="aa" value="10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16"><br>
+			<label for="ka">Keepalive:</label><input type="number" id="ka" name="ka" min="0" max="1000" value="25"><br>
+			<label for="cn">Client name (optional):</label><input type="text" id="cn" name="cn"><br>
+			<!-- <label for="ae">Admin email (optional):</label><input type="text" id="ae" name="ae"><br> -->
+			<!-- <input type="submit" value="Save"> -->
+		</form>
+	</div>
+	<div id="gen" class="usr">
+		<div style="margin-top: 20px;"></div>
+		<button id="genbtn" class="center-button">Generate</button>
+	</div>
+    <!-- <div id="mikrotik-command" class="command-box"></div> -->
+	<pre id="mikrotik-command"></pre>
+
+	<div id="results" class="usr">
+		
+            <a id="client-dl" class="button" href="#" class="center-button">Download client config</a>
+            <!--  <a id="server-dl" class="button" href="#">Download server config</a> -->
+            <!-- <a id="server-em" class="button" href="#">Email server config</a> -->
+        <p></p>
+	</div>
+    <script src="app2.js"></script>
+    <pre id="client-config"></pre>
+
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+	
+	<!-- <div id="qr"></div>  -->
+	
+
+
+	
+
+	<div class="qr-container">
+		<div id="qrcode"></div>
+    </div>
+	  
+
+</body>
+</html>
